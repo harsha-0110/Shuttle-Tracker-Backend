@@ -8,8 +8,8 @@ const io = socketIO(server);
 
 // Sample shuttle data (replace this with real data from your database or other sources)
 let shuttles = [
-  { id: 1, latitude: 37.7749, longitude: -122.4194 },
-  { id: 2, latitude: 37.7755, longitude: -122.4182 },
+  { id: 1, latitude: 12.9747120, longitude: 79.1589742 },
+  { id: 2, latitude: 12.9718872, longitude: 79.1740519 },
   // Add more shuttle data as needed
 ];
 
