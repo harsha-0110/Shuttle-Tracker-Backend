@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Sample shuttle data (replace with your data source)
 const shuttles = [
-  { id: '1', name: 'MB - Mens hostel', latitude: 12.972730, longitude: 79.160510, status: 'Vacant' },
+  { id: '1', name: 'MB - Mens hostel', latitude: 12.971060, longitude: 79.154191, status: 'Vacant' },
   { id: '2', name: 'SJT - MB', latitude: 12.972537, longitude: 79.160328, status: 'Full' },
 ];
 
