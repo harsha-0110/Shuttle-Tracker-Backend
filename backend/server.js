@@ -1,32 +1,22 @@
 const express = require('express');
-const http = require('http');
-const socketIO = require('socket.io');
-
 const app = express();
-const server = http.createServer(app);
-const io = socketIO(server);
+const port = 3000; // You can choose a different port
 
-// Sample shuttle data (replace this with real data from your database or other sources)
-let shuttles = [
-  { id: 1, latitude: 12.9747120, longitude: 79.1589742 },
-  { id: 2, latitude: 12.9718872, longitude: 79.1740519 },
-  // Add more shuttle data as needed
+// Middleware to parse JSON requests
+app.use(express.json());
+
+// Sample shuttle data (replace with your data source)
+const shuttles = [
+  { id: '1', name: 'MB - Mens hostel', latitude: 12.972730, longitude: 79.160510, status: 'Vacant' },
+  { id: '2', name: 'SJT - MB', latitude: 12.972537, longitude: 79.160328, status: 'Full' },
 ];
 
-io.on('connection', (socket) => {
-  console.log('Client connected');
-
-  // Emit shuttle location updates to the connected client every 5 seconds (for demonstration purposes)
-  setInterval(() => {
-    socket.emit('shuttleLocationUpdate', shuttles);
-  }, 5000);
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
-  });
+// Endpoint to get all shuttle data
+app.get('/shuttle', (req, res) => {
+  res.json(shuttles);
 });
 
-const port = 3000; // Replace with your desired port number
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
